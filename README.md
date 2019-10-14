@@ -37,4 +37,6 @@ or game to the extent shown in the syllabus?
 
 + Browser History (Visuals)
     - Given Browser History content, illustrate where user spends time (Pie chart)?
-    - This one seems really interesting. But it seems too personal.
+    - This one seems really interesting. 
+    - But it seems too personal.
+    - Seems less challenging. Not sure.
