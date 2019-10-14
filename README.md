@@ -26,6 +26,10 @@ I am currently deciding to choose one of the following topics that I have in min
 
 ### (5)
 
++ A Search Engine from scratch
+
+(If allowed, this would be my ideal selection)
+
 I had this idea that we had to use JS to build our project.
 Hence, I was looking forward to building a basic search engine since
 I seem to be really interested into figuring out how it works [bts]. So I spent 
