@@ -24,11 +24,17 @@ I am currently deciding to choose one of the following topics that I have in min
     - *input*: Enter your name / or any random drawing with your mouse on the window. 
     - *output*: musical tones based on how the drawing interacts with the 'special box' that takes in points and converts them into musical sounds.
 
-# (5)
+### (5)
 
 I had this idea that we had to use JS to build our project.
-Hence, I was kind of looking forward to building a basic search engine since
-I seem to be really interested into figuring out how it works. So I spent 
+Hence, I was looking forward to building a basic search engine since
+I seem to be really interested into figuring out how it works [bts]. So I spent 
 some time reading about 'crawling' and efficient ways to send request to database, etc. 
 But I am guessing this is not allowed anymore since it's not really data visualization 
 or game to the extent shown in the syllabus?
+
+### (6)
+
++ Browser History (Visuals)
+    - Given Browser History content, illustrate where user spends time (Pie chart)?
+    - This one seems really interesting. But it seems too personal.
