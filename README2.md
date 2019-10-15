@@ -51,4 +51,3 @@ or game to the extent shown in the syllabus?
 (7) Replicate "What Percent Are You?"
 
 -------------------------------------------
-
