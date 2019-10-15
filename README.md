@@ -1,19 +1,25 @@
 ## Stop and Frisk!
 
-### Background and Features & MPV
+### Background
 
 Stop and Frisk is a proactive policing practice implemented by New York City Police Department to prevent crime. Theoretically, the law enforcement agents stop anyone whose behaviour seem to be suspicious; they stop the person, ask relevant questions, and potentially search the suspect if they deem necessary. This encounter could lead to an arrest of a suspect given the circumstance.
 
 Overall, the policy is highly scrutinized due to public perception of its alleged racial bias towards minorities and low rates of effectiveness. 
 
-On this project, we try to illustrate the geo-location of each police stop on the map alongside its outcome* based on various filtering parameters such as person's race, ethnicity, sex, age, and location of stop.
+### Features & MPV
 
-Color: 'Green' for each stop and 'Yellow-Red' for each arrest.
-
-*outcome: refers to possible results of a police stop: arrest or free to go.
++ Features:
+    - Illustrate the geo-location of each police stop on the map alongside its outcome (arrest or free to go)
+    - Ability to filter data (year, race, ethnicity, gender, age, location of stop)
+    - Heatmap of police stops (green for each stop, red-yellow for each arrest)
+    - Additional crime related statistics
+    
++ Optional feature(s):
+    - Graph Number of Stops against Time
+    - tbd 
 
 ### Wireframes
-
+![Project Image](https://wireframe.cc/G49eQo)
 <a href="https://wireframe.cc/G49eQo"> Click here to see wireframes </a>
 
 ### Architecture and Technologies
