@@ -19,8 +19,8 @@ Overall, the policy is highly scrutinized due to public perception of its allege
     - tbd 
 
 ### Wireframes
-![Project Image](https://wireframe.cc/G49eQo)
-<a href="https://wireframe.cc/G49eQo"> Click here to see wireframes </a>
+
+![Project Image](./assets/images/projectimage.png)
 
 ### Architecture and Technologies
 
