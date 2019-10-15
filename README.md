@@ -44,3 +44,9 @@ or game to the extent shown in the syllabus?
     - This one seems really interesting. 
     - But it seems too personal.
     - Seems less challenging. Not sure.
+
+<!-- Check relevant APIs -->
+
+
+-------------------------------------------
+
