@@ -36,6 +36,7 @@ Color: 'Green' for each stop and 'Yellow-Red' for each arrest.
     Goal: Render something on the window
 
 + Day 2
+    - Show map
     - Load data, understand data, and most importantly be able to manipulate data
     - Figure out how to output data
     - Figure out how to present data based on user enabled filtering paramter(s)
