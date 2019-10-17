@@ -15,3 +15,12 @@
     - SVG - Scalable Vector Graphics - is an XML-based vector image format
         - SVG Page Elements
         - Whose behaviors and components can be altered via JS and CSS just like any other element in a webpage
+
+
+
+
+
+    Overall idea of map: 
+
+    Load dataset
+    

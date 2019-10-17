@@ -1,4 +1,5 @@
-// create index.js in /src directory and import style /src / styles / index.scss
+import './styles/index.css';
 
-// create index.html and import dist/main.css and dist/main.js appropriately
-
+document.addEventListener("DOMContentLoaded", () => {
+    document.getElementById("root").innerHTML = "Stop and Frisk";
+})
