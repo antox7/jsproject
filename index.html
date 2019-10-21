@@ -4,57 +4,25 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <link rel="stylesheet" type="text/css" media="screen" href="./src/styles/index.css" />
+    
     <script src="dist/main.js"></script>
-    <title>stopAndFrisk</title>
+    <script src="src/scripts/map.js"></script>
+    <script src="assets/data/data.js"></script>
+    <!-- <script type="module" src="assets/data/data.mjs"></script> -->
+    
+    <!-- <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script> -->
+
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCwp_Ef8hDVvIEsqXcnowl78_iI7kRU4&callback=initMap&libraries=visualization" type="text/javascript"></script>
+
+    <title>friskpolicy</title>
+
 </head>
 <body>
-    <div id="root"></div>
-    <div id="googleMap" style="width:700px;height:700px;"></div>
-
-    <script>
-        function initMap() {
-            
-            // this is just a data for heatmap to be placed later onto the map
-            var heatmapData = [
-                new google.maps.LatLng(47.66, -73.80),
-                new google.maps.LatLng(46.66, -73.80),
-                new google.maps.LatLng(45.66, -73.80),
-                new google.maps.LatLng(44.66, -73.80),
-                new google.maps.LatLng(43.66, -73.80),
-                new google.maps.LatLng(42.66, -73.80),
-                new google.maps.LatLng(41.66, -70.80),
-                new google.maps.LatLng(40.66, -70.80),
-                new google.maps.LatLng(40.66, -71.80),
-                new google.maps.LatLng(40.66, -72.80),
-            ];
-
-            // this is params to create map with centered NYC and zoom set to 11
-
-            // TODO: Styles a map in night mode.
-
-            var mapProp = {
-                center: new google.maps.LatLng(40.66, -73.80),
-                zoom: 11,
-            };
-
-            // this is creating map inside tag with elid googleMap
-            var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-        
-            // creating a heatmap based on data
-            var heatmap = new google.maps.visualization.HeatmapLayer({ data: heatmapData });
-
-            // adding heatmap onto our map
-            heatmap.setMap(map);
-
-        }
-        
-    </script>
-
-    <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCwp_Ef8hDVvIEsqXcnowl78_iI7kRU4&callback=initMap&libraries=visualization" type="text/javascript">
-    
-    </script>
-    <!-- <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCwp_Ef8hDVvIEsqXcnowl78_iI7kRU4&libraries=visualization">
-    </script> -->
+    <div class="container">
+        <div id="root"></div>
+        <div id="googleMap" style="width:700px;height:700px;"></div>
+    </div>
 </body>
 </html>
