@@ -6,10 +6,13 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     
     <link rel="stylesheet" type="text/css" media="screen" href="./src/styles/index.css" />
-    
+    <script src="https://kit.fontawesome.com/157ab10dd6.js" crossorigin="anonymous"></script>
     <script src="dist/main.js"></script>
     <script src="src/scripts/map.js"></script>
     <script src="assets/data/data.js"></script>
+    <script src="assets/data/pcts.js"></script>
+
+    <script src="assets/data/latestdata.js"></script>
     <!-- <script type="module" src="assets/data/data.mjs"></script> -->
     
     <!-- <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script> -->
@@ -22,7 +25,47 @@
 <body>
     <div class="container">
         <div id="root"></div>
-        <div id="googleMap" style="width:700px;height:700px;"></div>
+        <div class="map-and-filter-container">
+            <div id="googleMap"></div>
+            <div class="filter-secton">
+                <div class="crime-filter-container">
+                    <!-- <div class="map-type-container">
+                        <i class="fas fa-map"></i>
+                        <span> Map Type </span>
+                         <span> Heatmap </span>
+                    </div> -->
+                    <div class="crime-type-container">
+                        <!-- <img src="" alt="dropdown"> -->
+                        <!-- <i class="fas fa-arrows-alt-v"></i> -->
+                        <span> Crime Type </span>
+                        <div class="crime-type-input">
+                            <input type="radio" name="crime" value="all" checked="checked"> All <br>
+                            <input type="radio" name="crime" value="burglary"> Burglary <br>
+                            <input type="radio" name="crime" value="felony"> Felony Assault <br>
+                            <input type="radio" name="crime" value="larceny"> Grand Larceny <br>
+                            <input type="radio" name="crime" value="vehicle"> Motor Vehicle Theft <br>
+                            <input type="radio" name="crime" value="murder"> Murder <br>
+                            <input type="radio" name="crime" value="robbery"> Robbery <br>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="date-container">
+                        <span class="date-header">
+                            Date Range
+                        </span>
+                        <div>
+                            <span> The beginning of </span>
+                            <input type="month" id="start-date" name="start-date" min="2018-01" value="2018-01">
+                        </div>
+                        <div>
+                            <span> through the end of </span>
+                            <input type="month" id="end-date" name="end-date" min="2018-01" value="2019-09">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </body>
 </html>
