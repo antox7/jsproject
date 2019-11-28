@@ -1,31 +1,27 @@
-// import { data } from '../../assets/data/data.js';
-// import pcts from '../../assets/data/pcts';
 
 function initMap() {
 
-    data2;
-
-    data2.data[0][29]
-
     var heatmapData = [];
-    data2.data.forEach((coords) => {
-        heatmapData.push(new google.maps.LatLng(coords[29], coords[30]))
-    })
+    
+    // saving a function; when you invoke misd, the result is visible.
+    const misd = () => {
+        crimeData().done(function (data) {
+            data.forEach((data) => {
+                if(data.law_cat_cd === "MISDEMEANOR") {
+                    heatmapData.push(new google.maps.LatLng(data.latitude, data.longitude))
+                }
+            })
+        }) 
+    }
 
-    // this is params to create map with centered NYC and zoom set to 11
-
-    // TODO: Styles a map in night mode.
+    misd();
+   
 
     var mapProp = {
         center: new google.maps.LatLng(40.7481, -73.9848),
-        zoom: 13,
+        zoom: 11,
         panControl: false,
         streetViewControl: false,
-        //      draggable: false,
-        //      scaleControl: false,
-        //      scrollwheel: false,
-        //      disableDefaultUI: true,
-
         styles:
             [
                 {
@@ -33,7 +29,7 @@ function initMap() {
                     "elementType": "geometry.fill",
                     "stylers": [
                         {
-                            "weight": "2.00"
+                            "weight": "1.00"
                         }
                     ]
                 },
@@ -199,20 +195,12 @@ function initMap() {
             ]
     };
 
-    // this is creating map inside tag with elid googleMap
     var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
-    // var geojson = JSON.parse(data2);
-    // map.data.addGeoJson(JsObject.jsify(pcts.data));
-    map.data.loadGeoJson('pcts.geojson');
-    // map.data.loadGeoJson(
-    //     'https://data.cityofnewyork.us/resource/kmub-vria.json');
-        // .then(() => {
-        //     debugger
-        //     console.log("Hi");
-        // });
-    // creating a heatmap based on data
-    var heatmap = new google.maps.visualization.HeatmapLayer({ data: heatmapData });
+    
+    // map.data.loadGeoJson('pcts.geojson');    
+    
 
-    // // adding heatmap onto our map
+    const heatmap = new google.maps.visualization.HeatmapLayer({ data: heatmapData });
+
     heatmap.setMap(map);
 }

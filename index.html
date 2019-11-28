@@ -9,14 +9,9 @@
     <script src="https://kit.fontawesome.com/157ab10dd6.js" crossorigin="anonymous"></script>
     <script src="dist/main.js"></script>
     <script src="src/scripts/map.js"></script>
-    <script src="assets/data/data.js"></script>
-    <script src="assets/data/pcts.js"></script>
-
+    <script src="src/scripts/crime_data.js"></script>
     <script src="assets/data/latestdata.js"></script>
-    <!-- <script type="module" src="assets/data/data.mjs"></script> -->
     
-    <!-- <script src="https://d3js.org/d3.v5.min.js" charset="utf-8"></script> -->
-
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCwp_Ef8hDVvIEsqXcnowl78_iI7kRU4&callback=initMap&libraries=visualization" type="text/javascript"></script>
 
     <title>friskpolicy</title>
@@ -38,34 +33,28 @@
                         <!-- <img src="" alt="dropdown"> -->
                         <!-- <i class="fas fa-arrows-alt-v"></i> -->
                         <span> Crime Type </span>
-                        <div class="crime-type-input">
-                            <input type="radio" name="crime" value="all" checked="checked"> All <br>
-                            <input type="radio" name="crime" value="burglary"> Burglary <br>
-                            <input type="radio" name="crime" value="felony"> Felony Assault <br>
-                            <input type="radio" name="crime" value="larceny"> Grand Larceny <br>
-                            <input type="radio" name="crime" value="vehicle"> Motor Vehicle Theft <br>
-                            <input type="radio" name="crime" value="murder"> Murder <br>
-                            <input type="radio" name="crime" value="robbery"> Robbery <br>
+                            <select class="crime-type-input">
+                                <option value="all">All</option>
+                                <option value="burg">Burglary</option>
+                                <option value="felony">Felony</option>
+                                <option value="car">Vehicle Theft</option>
+                                <option value="murder">Murder</option>
+                                <option value="robbery">Robbery</option>
+                            </select>
                         </div>
-                    </div>
-                    
-                    
-                    <div class="date-container">
-                        <span class="date-header">
-                            Date Range
-                        </span>
-                        <div>
-                            <span> The beginning of </span>
-                            <input type="month" id="start-date" name="start-date" min="2018-01" value="2018-01">
-                        </div>
-                        <div>
-                            <span> through the end of </span>
-                            <input type="month" id="end-date" name="end-date" min="2018-01" value="2019-09">
+                        <span> Year </span>
+                        <select class="year-type-input">
+                            <option value="2017">2017</option>
+                            <option value="2016">2016</option>
+                            <option value="2015">2015</option>
+                        </select>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+    <!-- <script src="js/scripts.js"></script> -->
 </body>
 </html>
