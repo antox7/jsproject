@@ -1,40 +1,75 @@
+const prevEvents = [];
+
 function initMap() {
 
     const crimeType = document.getElementById('crime-type-input');
     crimeType.addEventListener('change', function() {
         debugger
-        createMap(this.value);
+        prevEvents.push(this.value);
+        createMap({crimeType: this.value});
     }, false);
+    
+    const year = document.getElementById('year-type-input');
+    year.addEventListener('change', function () {
+        // console.log(this.value);
+        createMap({crimeType: prevEvents[prevEvents.length - 1], year: this.value});
+        }, 
+        false);
 
     const createMap = (filter) => {
         debugger
-        crimeData(10).done(function (data) {
+        if (!filter.year) {
             debugger
+            filter['year'] = '2010';
+        }
+        crimeDataYear(filter.year).done(function (data) {
+            // debugger
+            // const allData = [];
+            // data.forEach((datum) => {
+            //     if(!allData.includes(datum.ofns_desc)) {
+            //         allData.push(datum.ofns_desc);
+            //     }
+            // })
+            // console.log(allData);
+            // // console.log(data.filter((datum) => {
+            // //     if(filter === "ALL") {
+            // //         return datum;
+            // //     } else {
+            // //         if(datum.law_cat_cd === filter) {
+            // //             return datum;
+            // //         }
+            // //     }
+            // // }));
+
             const allData = [];
             data.forEach((datum) => {
-                if(!allData.includes(datum.ofns_desc)) {
-                    allData.push(datum.ofns_desc);
+                if (datum.cmplnt_fr_dt) {
+                    if(datum.cmplnt_fr_dt.slice(0, 4) === '2018') {
+                    allData.push(datum.cmplnt_fr_dt);
+                    }
                 }
             })
+
             console.log(allData);
-            // console.log(data.filter((datum) => {
-            //     if(filter === "ALL") {
-            //         return datum;
-            //     } else {
-            //         if(datum.law_cat_cd === filter) {
-            //             return datum;
-            //         }
-            //     }
-            // }));
+
             const heatmapData = [];
             data.forEach((datum) => {
                 if(datum.latitude && datum.longitude) {
-                    if (filter === "ALL") {
-                        heatmapData.push(new google.maps.LatLng(datum.latitude, datum.longitude));                        
+                    if (filter.crimeType === "ALL") {
+                        if (datum.cmplnt_fr_dt.slice(0, 4) === filter.year) {
+                            debugger
+                            heatmapData.push(new google.maps.LatLng(datum.latitude, datum.longitude));                        
+                        }
                     } else {
-                        debugger
-                        if(datum.ofns_desc === filter) {
+                        if(['MISDEMEANOR', 'VIOLATION', 'FELONY'].includes(filter.crimeType)) {
+                            if (datum.cmplnt_fr_dt.slice(0, 4) === filter.year && datum.law_cat_cd === filter.crimeType) {
+                                heatmapData.push(new google.maps.LatLng(datum.latitude, datum.longitude));
+                            }
+                        }
+                        else {
+                            if (datum.cmplnt_fr_dt.slice(0, 4) === filter.year && datum.ofns_desc === filter.crimeType) {
                             heatmapData.push(new google.maps.LatLng(datum.latitude, datum.longitude));
+                            }
                         }
                     }
                 }
@@ -156,7 +191,7 @@ function initMap() {
             heatmap.setMap(map);
         })
     }
-    crimeData(10).done(function (data) {
+    crimeDataYear('2010').done(function (data) {
         // console.log(data.filter((datum) => {
         //     if (datum.law_cat_cd === filter) {
         //         return datum;
@@ -283,4 +318,5 @@ function initMap() {
         heatmap.set('radius', 5);
         heatmap.setMap(map);
     })
+    
 }
