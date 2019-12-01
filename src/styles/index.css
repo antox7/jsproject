@@ -151,3 +151,11 @@ body {
 .icons {
     margin-right: 90px;
 }
+
+.icons i:hover {
+    cursor: pointer;
+}
+
+#root:hover {
+    cursor: pointer;
+}
