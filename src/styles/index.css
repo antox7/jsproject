@@ -3,10 +3,6 @@
     font-family: Arial, Helvetica, sans-serif;
     font-size: 40px;
     font-weight: bold;
-    color: white;
-    background-color: black;
-    width: 100%;
-    height: 80px;
     display: flex;
     align-items: center;
     padding-left: 60px;
@@ -27,31 +23,20 @@
 .map-and-filter-container {
     display: flex;
     flex-direction: row;
-    /* justify-content: space-between; */
     border-left: 1px solid white;
     justify-content: center;
 }
 
 .crime-filter-container {
     border-left: 2px solid rgba(0,0,0,0.5);
-    /* margin-right: 15px; */
     width: 320px;
     height: 100%;
     box-shadow: 2px 10px 20px 5px rgba(0,0,0,0.5);    
     z-index: 10px;
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
 }
-/* 
-.map-type-container {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    box-sizing: border-box;
-    padding: 10px;
-} */
 
 span {
     font-family: Arial, Helvetica, sans-serif;
@@ -65,7 +50,6 @@ div {
     font-family: Arial, Helvetica, sans-serif;
     color: #333333;
     font-size: 18px;
-    /* margin: 5px 3px 5px 3px; */
 }
 
 .crime-type-container {
@@ -80,13 +64,28 @@ div {
     margin-bottom: 10px;
 }
 
-/* .crime-type-container span {
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    border-bottom: 1px solid rgb(221, 221, 221);
-} */
-
 #crime-type-input {
+    font-size: 18px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+#race-type-input {
+    font-size: 18px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+#gender-type-input {
+    font-size: 18px;
+    box-sizing: border-box;
+    padding: 10px;
+    border: 1px solid rgb(221, 221, 221);
+}
+
+#age-type-input {
     font-size: 18px;
     box-sizing: border-box;
     padding: 10px;
@@ -130,4 +129,25 @@ body {
     margin: 0px;
     width: 100%;
     height: auto;
+}
+
+.header-container {
+    display: flex;
+    flex-direction: row;
+    background-color: black;
+    width: 100%;
+    height: 80px;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.icons i {
+    width: 25px;
+    height: 25px;
+    margin-left: 40px;
+    color: white;
+}
+
+.icons {
+    margin-right: 90px;
 }

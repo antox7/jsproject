@@ -1,3 +1,5 @@
+## EDIT: Formerly Stop and Frisk, this project now uses Crime Complaint Data instead of S&F data.
+
 ## Stop and Frisk!
 
 ### Background

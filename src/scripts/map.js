@@ -1,61 +1,66 @@
-const prevEvents = [];
+const allFilters = {
+    crimeEvent: 'ALL',
+    yearEvent: 'ALL',
+    ageEvent: 'ALL',
+    raceEvent: 'ALL',
+    genderChosen: 'ALL',
+}
 
 window.onload = function initMap() {
 
-    const crimeType = document.getElementById('crime-type-input');
-    crimeType.addEventListener('change', 
+    document.getElementById('crime-type-input').addEventListener('change', 
         function() {
-            prevEvents.push(this.value);
-            createMap({crimeType: this.value});
+            allFilters.crimeEvent = this.value;
+            createMap(allFilters);
         }, 
         false
     );
     
-    const year = document.getElementById('year-type-input');
-    year.addEventListener('change', 
+    document.getElementById('year-type-input').addEventListener('change', 
         function () {
-        // console.log(this.value);
-        createMap({crimeType: prevEvents[prevEvents.length - 1], year: this.value});
+        allFilters.yearEvent = this.value;
+        createMap(allFilters);
         }, 
         false
     );
 
+    document.getElementById('race-type-input').addEventListener('change',
+        function () {
+            allFilters.raceEvent = this.value;
+            createMap(allFilters);
+        },
+        false
+    );
+
+    document.getElementById('gender-type-input').addEventListener('change',
+        function () {
+            allFilters.genderChosen = this.value;
+            createMap(allFilters);
+        },
+        false
+    );
+
+    document.getElementById('age-type-input').addEventListener('change',
+        function () {
+            if(this.value === "18") {
+                allFilters.ageEvent = '<18';
+            } else {
+                allFilters.ageEvent = this.value;
+            }
+            createMap(allFilters);
+        },
+        false
+    );
+
     const createMap = (filter) => {
-        if (!filter.year) {
-                filter['year'] = '2010';
-        }
-        crimeDataYear(filter.year).done(function (data) {
-        
-            const allData = [];
-            data.forEach((datum) => {
-                if (datum.cmplnt_fr_dt) {
-                    if(datum.cmplnt_fr_dt.slice(0, 4) === '2018') {
-                    allData.push(datum.cmplnt_fr_dt);
-                    }
-                }
-            })
 
-            console.log(allData);
-
+        crimeDataYear(filter).done(function (data) {
+            
             const heatmapData = [];
+            
             data.forEach((datum) => {
                 if(datum.latitude && datum.longitude) {
-                    if (filter.crimeType === "ALL") {
-                        if (datum.cmplnt_fr_dt.slice(0, 4) === filter.year) {
-                                                heatmapData.push(new google.maps.LatLng(datum.latitude, datum.longitude));                        
-                        }
-                    } else {
-                        if(['MISDEMEANOR', 'VIOLATION', 'FELONY'].includes(filter.crimeType)) {
-                            if (datum.cmplnt_fr_dt.slice(0, 4) === filter.year && datum.law_cat_cd === filter.crimeType) {
-                                heatmapData.push(new google.maps.LatLng(datum.latitude, datum.longitude));
-                            }
-                        }
-                        else {
-                            if (datum.cmplnt_fr_dt.slice(0, 4) === filter.year && datum.ofns_desc === filter.crimeType) {
-                            heatmapData.push(new google.maps.LatLng(datum.latitude, datum.longitude));
-                            }
-                        }
-                    }
+                    heatmapData.push(new google.maps.LatLng(datum.latitude, datum.longitude));                        
                 }
             })
 
@@ -147,37 +152,22 @@ window.onload = function initMap() {
             };
             
             const map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+            
             const heatmap = new google.maps.visualization.HeatmapLayer({
                 data: heatmapData,
                 map: map
             });
 
-            // var gradient = [
-            //     'rgba(0, 255, 255, 0)',
-            //     'rgba(0, 255, 255, 1)',
-            //     'rgba(0, 191, 255, 1)',
-            //     'rgba(0, 127, 255, 1)',
-            //     'rgba(0, 63, 255, 1)',
-            //     'rgba(0, 0, 255, 1)',
-            //     'rgba(0, 0, 223, 1)',
-            //     'rgba(0, 0, 191, 1)',
-            //     'rgba(0, 0, 159, 1)',
-            //     'rgba(0, 0, 127, 1)',
-            //     'rgba(63, 0, 91, 1)',
-            //     'rgba(127, 0, 63, 1)',
-            //     'rgba(191, 0, 31, 1)',
-            //     'rgba(255, 0, 0, 1)'
-            // ]
-            // var gradient = ['rbga(221, 184, 108, 0)'];
-            // heatmap.set('gradient', gradient);
-
-            heatmap.set('radius', 7);
+            heatmap.set('radius', 5);
+            
             heatmap.setMap(map);
         })
     }
-    crimeDataYear('2010').done(function (data) {
-        
+
+    crimeDataYear(allFilters).done(function (data) {
+
         const heatmapData = [];
+        
         data.forEach((datum) => {
             if (datum.latitude && datum.longitude) {
                 heatmapData.push(new google.maps.LatLng(datum.latitude, datum.longitude));
@@ -272,12 +262,20 @@ window.onload = function initMap() {
         };
 
         const map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+        
         const heatmap = new google.maps.visualization.HeatmapLayer({
             data: heatmapData,
             map: map
         });
 
         heatmap.set('radius', 5);
+
         heatmap.setMap(map);
+    
+    })
+
+
+    document.getElementById('root').addEventListener('click', e => {
+        window.location.href = "https://antox7.github.io/exploreCrime/"
     })
 }

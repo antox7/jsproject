@@ -11,6 +11,10 @@
     <script src="src/scripts/map.js"></script>
     <script src="src/scripts/crime_data.js"></script>
     <script src="assets/data/latestdata.js"></script>
+
+    <link href="/your-path-to-fontawesome/css/fontawesome.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/brands.css" rel="stylesheet">
+    <link href="/your-path-to-fontawesome/css/solid.css" rel="stylesheet">
     
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCFCwp_Ef8hDVvIEsqXcnowl78_iI7kRU4&callback=initMap&libraries=visualization" type="text/javascript"></script>
 
@@ -19,22 +23,28 @@
 </head>
 <body>
     <div class="container">
-        <div id="root"></div>
+        <div class="header-container">
+            <div id="root"></div>
+            <div class="icons">
+                <a href="https://www.linkedin.com/in/antoxaaa7/" target="_blank">
+                    <i class="fab fa-linkedin fa-3x"></i>
+                </a>
+                <a href="https://github.com/antox7" target="_blank">
+                    <i class="fab fa-github-square fa-3x"></i>
+                </a>
+                <a href="https://angel.co/antoxaaa7" target="_blank">
+                    <i class="fab fa-angellist fa-3x"></i>
+                </a>
+            </div>
+        </div>
         <div class="map-and-filter-container">
             <div id="googleMap"></div>
             <div class="filter-secton">
                 <div class="crime-filter-container">
-                    <!-- <div class="map-type-container">
-                        <i class="fas fa-map"></i>
-                        <span> Map Type </span>
-                         <span> Heatmap </span>
-                    </div> -->
                     <div class="crime-type-container">
-                        <!-- <img src="" alt="dropdown"> -->
-                        <!-- <i class="fas fa-arrows-alt-v"></i> -->
                         <span> Crime Type </span>
                             <select id="crime-type-input">
-                                <option value="ALL">All</option>
+                                <option value="ALL" selected>All</option>
                                 <option value="" disabled>General Categories</option>
                                 <option value="MISDEMEANOR">Misdemeanor</option>
                                 <option value="FELONY">Felony</option>
@@ -53,8 +63,8 @@
                                 <option value="ARSON">Arson</option>
                                 <option value="POSSESSION OF STOLEN PROPERTY">Stolen Property</option>
                                 <option value="OFFENSES AGAINST THE PERSON">Offense Against Person</option>
-                                <option value="KIDNAPPING & RELATED OFFENSES">Kidnapping</option>
-                                <option value="MURDER & NON-NEGL. MANSLAUGHTER">Murder & Manslaughter</option>
+                                <option value="KIDNAPPING %26 RELATED OFFENSES">Kidnapping</option>
+                                <option value="MURDER %26 NON-NEGL. MANSLAUGHTER">Murder & Manslaughter</option>
                             </select>
                         <span> Year </span>
                         <select id="year-type-input">
@@ -68,13 +78,33 @@
                             <option value="2011">2011</option>
                             <option value="2010" selected>2010</option>
                         </select>
-                        <!-- <div class="slider-container">
-                            <span> Data Points </span>
-                            <input type="range" min="100" max="10000" name="slider" class="slider">
-                            <div class="data-range">
-                                <span>0</span><span>10000</span>
-                            </div>
-                        </div> -->
+                        
+                        <span> Suspect Race </span>
+                        <select id="race-type-input">
+                            <option value="ALL" selected>ALL</option>
+                            <option value="WHITE HISPANIC">WHITE HISPANIC</option>
+                            <option value="WHITE">WHITE</option>
+                            <option value="BLACK">BLACK</option>
+                            <option value="BLACK HISPANIC">BLACK HISPANIC</option>
+                            <option value="ASIAN / PACIFIC ISLANDER">ASIAN / PACIFIC ISLANDER</option>
+                            <option value="AMERICAN INDIAN / ALASKAN NATIVE">AMERICAN INDIAN / ALASKAN NATIVE</option>
+                        </select>
+
+                        <span> Suspect Sex </span>
+                        <select id="gender-type-input">
+                            <option value="ALL" selected>ALL</option>
+                            <option value="F">FEMALE</option>
+                            <option value="M">MALE</option>
+                        </select>
+
+                        <span> Suspect Age Group </span>
+                        <select id="age-type-input">
+                            <option value="ALL" selected>ALL</option>
+                            <option value="18"> &lt; 18 </option>
+                            <option value="18-24">18-24</option>
+                            <option value="25-44">25-44</option>
+                            <option value="45-64">45-64</option>
+                        </select>
                     </div>
                 </div>
             </div>
