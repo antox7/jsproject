@@ -1,46 +1,31 @@
 const prevEvents = [];
 
-function initMap() {
+window.onload = function initMap() {
 
     const crimeType = document.getElementById('crime-type-input');
-    crimeType.addEventListener('change', function() {
-        debugger
-        prevEvents.push(this.value);
-        createMap({crimeType: this.value});
-    }, false);
+    crimeType.addEventListener('change', 
+        function() {
+            prevEvents.push(this.value);
+            createMap({crimeType: this.value});
+        }, 
+        false
+    );
     
     const year = document.getElementById('year-type-input');
-    year.addEventListener('change', function () {
+    year.addEventListener('change', 
+        function () {
         // console.log(this.value);
         createMap({crimeType: prevEvents[prevEvents.length - 1], year: this.value});
         }, 
-        false);
+        false
+    );
 
     const createMap = (filter) => {
-        debugger
         if (!filter.year) {
-            debugger
-            filter['year'] = '2010';
+                filter['year'] = '2010';
         }
         crimeDataYear(filter.year).done(function (data) {
-            // debugger
-            // const allData = [];
-            // data.forEach((datum) => {
-            //     if(!allData.includes(datum.ofns_desc)) {
-            //         allData.push(datum.ofns_desc);
-            //     }
-            // })
-            // console.log(allData);
-            // // console.log(data.filter((datum) => {
-            // //     if(filter === "ALL") {
-            // //         return datum;
-            // //     } else {
-            // //         if(datum.law_cat_cd === filter) {
-            // //             return datum;
-            // //         }
-            // //     }
-            // // }));
-
+        
             const allData = [];
             data.forEach((datum) => {
                 if (datum.cmplnt_fr_dt) {
@@ -57,8 +42,7 @@ function initMap() {
                 if(datum.latitude && datum.longitude) {
                     if (filter.crimeType === "ALL") {
                         if (datum.cmplnt_fr_dt.slice(0, 4) === filter.year) {
-                            debugger
-                            heatmapData.push(new google.maps.LatLng(datum.latitude, datum.longitude));                        
+                                                heatmapData.push(new google.maps.LatLng(datum.latitude, datum.longitude));                        
                         }
                     } else {
                         if(['MISDEMEANOR', 'VIOLATION', 'FELONY'].includes(filter.crimeType)) {
@@ -192,38 +176,14 @@ function initMap() {
         })
     }
     crimeDataYear('2010').done(function (data) {
-        // console.log(data.filter((datum) => {
-        //     if (datum.law_cat_cd === filter) {
-        //         return datum;
-        //     }
-        // }));
+        
         const heatmapData = [];
         data.forEach((datum) => {
             if (datum.latitude && datum.longitude) {
-                // if (datum.law_cat_cd === filter) {
-                    heatmapData.push(new google.maps.LatLng(datum.latitude, datum.longitude));
-                // }
+                heatmapData.push(new google.maps.LatLng(datum.latitude, datum.longitude));
             }
         })
-        // var gradient = [
-            //     'rgba(0, 255, 255, 0)',
-            //     'rgba(0, 255, 255, 1)',
-            //     'rgba(0, 191, 255, 1)',
-            //     'rgba(0, 127, 255, 1)',
-            //     'rgba(0, 63, 255, 1)',
-            //     'rgba(0, 0, 255, 1)',
-            //     'rgba(0, 0, 223, 1)',
-            //     'rgba(0, 0, 191, 1)',
-            //     'rgba(0, 0, 159, 1)',
-            //     'rgba(0, 0, 127, 1)',
-            //     'rgba(63, 0, 91, 1)',
-            //     'rgba(127, 0, 63, 1)',
-            //     'rgba(191, 0, 31, 1)',
-            //     'rgba(255, 0, 0, 1)'
-            // ]
-            // var gradient = ['rbga(221, 184, 108, 0)'];
-            // heatmap.set('gradient', gradient);
-
+        
         const mapProp = {
             center: new google.maps.LatLng(40.7481, -73.9848),
             zoom: 11,
@@ -310,13 +270,14 @@ function initMap() {
                 }
             ]
         };
+
         const map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
         const heatmap = new google.maps.visualization.HeatmapLayer({
             data: heatmapData,
             map: map
         });
+
         heatmap.set('radius', 5);
         heatmap.setMap(map);
     })
-    
 }
