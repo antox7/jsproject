@@ -10,10 +10,8 @@ const crimeDataYear = (filter) => {
     let crime, year, age, race, gender
 
     if(['MISDEMEANOR', 'VIOLATION', 'FELONY'].includes(filter.crimeEvent)) {
-        debugger
         crime = `&&law_cat_cd=${filter.crimeEvent}`;
     } else {
-        debugger
         filter.crimeEvent.includes('ALL') ? crime = '' : crime = `&&ofns_desc=${filter.crimeEvent}`;  
     }
 
@@ -22,10 +20,6 @@ const crimeDataYear = (filter) => {
     filter.ageEvent.includes('ALL') ? age = '' : age = `&&susp_age_group=${filter.ageEvent}`;
     filter.raceEvent.includes('ALL') ? race = '' : race = `&&susp_race=${filter.raceEvent}`;
     filter.genderChosen.includes('ALL') ? gender = '' : gender = `&&susp_sex=${filter.genderChosen}`;
-    
-    debugger
-
-    console.log(`https://data.cityofnewyork.us/resource/qgea-i56i.json?${year}${crime}${age}${race}${gender}`);
 
     return $.ajax({
         url: `https://data.cityofnewyork.us/resource/qgea-i56i.json?${year}${crime}${age}${race}${gender}`,

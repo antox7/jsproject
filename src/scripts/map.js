@@ -273,8 +273,7 @@ window.onload = function initMap() {
         heatmap.setMap(map);
     
     })
-
-
+    
     document.getElementById('root').addEventListener('click', e => {
         window.location.href = "https://antox7.github.io/exploreCrime/"
     })
